@@ -55,7 +55,7 @@ Some properties of note:
 
 | Property | Description |   
 |----------|-------------|   
-| `redirectUri` | This is the OAuth 2.0 redirect URL, this will end in `/call` and be something like `http://localhost:3000/callback` or `https://755c8b38.ngrok.io/callback`. This needs to be configured in your app in the Developer Portal(https://developer.intuit.com) |  
+| `redirectUri` | This is the OAuth 2.0 redirect URL, this will end in `/call` and be something like `http://localhost:8000/callback` or `https://755c8b38.ngrok.io/callback`. This needs to be configured in your app in the Developer Portal(https://developer.intuit.com) |  
 | `webhookUri` | This is the webhook URL which ends in `/webhook` and can be something like `https://yourdomain.com/webhook` or `https://755c8b38.ngrok.io/hook`. |  
 
 
@@ -66,25 +66,29 @@ Webhooks requires your enpoint to be exposed over the internet. The easiest way 
 
 Here are the steps to configure ngrok  
 1. Download and install ngrok  
-2. Expose your localhost by running "ngrok http 3000" on the command line.  
-3. You will then get a forwarding url that looks something like this: Forwarding https://755c8b38.ngrok.io -> localhost:3000
+2. Expose your localhost by running "ngrok http 8000" on the command line.  
+3. You will then get a forwarding url that looks something like this: Forwarding https://755c8b38.ngrok.io -> localhost:8000
 
-This will expose localhost:3000 to the Internet. Your endpoint url will now be https://755c8b38.ngrok.io/webhooks Copy this url and use it for setting up webhooks on [Intuit Developer Portal](https://developer.intuit.com) for your app.
+This will expose localhost:8000 to the Internet. Your endpoint url will now be https://755c8b38.ngrok.io/webhooks Copy this url and use it for setting up webhooks on [Intuit Developer Portal](https://developer.intuit.com) for your app.
 
 
 ## Usage
+
+### Start ngrok (if you are using ngrok )
+
+```bash
+$ ngrok http 8000
+```
+
+### Update config.json under "SampleApp-WebhookNotifications-nodejs" directory.
+Update "redirectUri" and "webhookUri" keys to the file "SampleApp-WebhookNotifications-nodejs/config.json".
+
 
 ### Start Node.js
 
 
 ```bash
 $ npm start
-```
-
-### Start ngrok (if you are using ngrok )
-
-```bash
-$ ngrok http 3000
 ```
 
 Go to the URL (you must start ngrok if using it):
